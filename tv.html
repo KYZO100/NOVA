@@ -9,1008 +9,7 @@
   <link rel="icon" href="https://github.com/PrivateKY/MYDATABASE/raw/refs/heads/main/icon" type="image/x-icon">
   <title>TV Show</title>
 
-  <style>
-        .container::-webkit-scrollbar {
-        height: 8px;
-    }
 
-    .container::-webkit-scrollbar-thumb {
-        background-color: #333;
-        border-radius: 10px;
-    }
-    @media screen and (max-width: 600px) {
-    .container::-webkit-scrollbar {
-        height: 0px;
-    }
-    .container::-webkit-scrollbar-thumb {
-        background-color: #333;
-        border-radius: 10px;
-    }
-}
-body::-webkit-scrollbar {
-    width: 8px;
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: rgb(60, 67, 69);
-    border-radius: 10px;
-    border: 2px solid rgb(60, 67, 69);
-}
-
-body::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-    .episode-content p {
-    margin: 5px 0;
-  }
-  .title-duration-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  .episode-title {
-    font-size: 1.0rem;
-    font-weight: bold;
-    flex: 1;
-    margin-right: 10px;
-  }
-  
-  .episode-description {
-    font-size: 13px;
-    color: #aaa;
-    font-weight: 400;
-  
-  }
-  
-  
-    * {
-      font-family: Manrope, sans-serif;
-      color: #fff;
-    }
-    body {
-      margin: 0;
-      background-color: #181a20;
-      overflow-x: hidden;
-  
-    }
-    p {
-      margin: 0;
-      padding: 0;
-    }
-    .hidden {
-      display: none !important;
-    }
-    a {
-      text-decoration: none;
-    }
-    #info-container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-      width: 100vw;
-      height: 100vh;
-      gap: 50px;
-      text-align: center;
-    }
-    #info-backdrop {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-      filter: blur(10px);
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      opacity: 0.3;
-    }
-    #info-poster {
-      width: 300px;
-      border-radius: 12px;
-      z-index: 12;
-      box-shadow: 5px 5px 20px #181a20;
-    }
-    #info-top {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      width: 600px;
-      gap: 15px;
-      z-index: 11;
-    }
-    #info-title {
-      max-width: 45vw;
-      max-height: 35vh;
-      font-size: 2.5rem;
-      font-weight: 600;
-    }
-    #info-title-text {
-      display: none;
-      font-size: 2.5rem;
-      font-weight: 600;
-    }
-    #info-bar {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 12px;
-      font-weight: 600;
-    }
-    #info-rating-bar {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-    }
-    #info-genres {
-      font: bold;
-      display: flex;
-      justify-content: center;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .genre-box {
-      padding: 5px 8px;
-      border-radius: 5px;
-      background-color: #1f669c;
-      color: #ffffff;
-      box-shadow: 1px 2px 20px #181a20;
-    }
-    #info-description {
-      color: #ffffffd9;
-      font-size: 1.1rem;
-    }
-    #season-selector {
-      background-color: #00ccff;
-      color: black;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    #episodes-container {
-      margin-top: 40px;
-      
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      border-radius: 8px;
-      justify-content: center;
-      
-  
-    }
-    @media (max-width: 600px) { 
-    #episodes-container {
-      padding: 0 20px;
-      position: absolute;
-      right: 40px;
-    }
-  }
-    @media (max-width: 600px) { 
-    #episodes-container {
-      padding: 0 20px;
-      position: absolute;
-      left: 40px;
-      width: 400px;
-    }
-  }
-    .episode-box {
-      text-decoration: none;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      background: #1c1c1c00;
-      border-radius: 10px;
-      overflow: hidden;
-  
-    }
-    .episode img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .episode-content {
-  
-    margin: 5px 0;
-  }
-  
-    .episode-duration {
-    font-size: 0.9rem;
-    color: #aaa;
-    white-space: nowrap;
-  }
-    }
-    #footer {
-      background-color: #101010;
-      padding: 20px;
-      text-align: center;
-      color: white;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-    #footer-right {
-      float: right;
-    }
-    #dmca {
-      color: #00ccff;
-      text-decoration: none;
-    }
-    #dmca:hover {
-      text-decoration: underline;
-    }
-    @media (max-height: 600px) {
-  
-        
-      #hero-title-image {
-        display: none !important;
-        max-width: 90%;
-      }
-      #hero-title-text {
-        display: flex;
-      }
-      #hero-desc {
-        width: 100% !important;
-        text-align: center;
-        font-size: 1rem;
-      }
-      #hero-buttons,
-      #hero-bar {
-        justify-content: center;
-      }
-      #hero-content {
-        margin: 0 1rem;
-      }
-      #hero-card {
-        margin-bottom: 15vh !important;
-      }
-      #home {
-        top: -10vh !important;
-        margin-bottom: -10vh !important;
-      }
-      #hero-title {
-        display: flex;
-        justify-content: center;
-      }
-      #header {
-        transition: top 0.25s;
-      }
-      #header.show {
-        top: -80px;
-      }
-      #header.visible {
-        top: 0;
-      }
-      #info-title {
-        display: none;
-      }
-      #info-title-text {
-        display: flex;
-      }
-      #discover-section {
-        margin: 0;
-      }
-  
-      #discover-slider {
-        margin-right: 10px;
-      }
-    }
-    @media (max-height: 450px) {
-      .card img,
-      #discover-slider {
-        width: 20vw;
-      }
-      #discover-card {
-        min-height: 31vw;
-        padding: 12px 1rem;
-      }
-      .card {
-        width: 20vw;
-      }
-      #discover-title {
-        font-size: 1.5rem;
-      }
-      #header-section {
-        margin: 0.8rem 1rem !important;
-      }
-      #info-top {
-        gap: 8px;
-        padding-top: 50px;
-      }
-      #info-description {
-        font-size: 0.875rem;
-      }
-    }
-    @media (max-width: 1400px) {
-  
-      .watch-card img,
-      .watch-card {
-        width: 15vw;
-      }
-      .widecard-image {
-        width: 20vw;
-      }
-  
-      .card img {
-        width: 16vw;
-      }
-      #discover-card {
-        min-height: 25vw;
-      }
-      .card,
-      #discover-slider {
-        width: 16vw;
-      }
-      #discover-section {
-        margin: 1rem 1.5rem;
-      }
-    }
-    @media (max-width: 1100px) {
-      #service {
-        display: none;
-      }
-      #discover-section {
-        margin: 1rem;
-      }
-      #watchlist-button {
-        opacity: 1;
-      }
-      .watch-card img,
-      .watch-card {
-        width: 18vw;
-      }
-      #settings-main {
-        margin: 0 2.5rem;
-      }
-      .widecard-image {
-        width: 28vw;
-      }
-      #hero-desc {
-        width: 60vw;
-      }
-      #info-poster {
-        display: none;
-      }
-      #suggested-container {
-        margin: 16px 50px;
-      }
-  
-      .card-content {
-        opacity: 1;
-      }
-      .card-content {
-        background: linear-gradient(to top, #000, #0000 70%);
-      }
-      .swiper-button-next,
-      .swiper-button-prev {
-        display: none !important;
-      }
-      .card img {
-        width: 20vw;
-      }
-      #discover-card {
-        min-height: 31vw;
-        padding: 12px 1rem;
-      }
-      .card,
-      #discover-slider {
-        width: 20vw;
-      }
-    }
-    @media (max-width: 800px) {
-      #search-section {
-        margin: 0 2rem;
-      }
-      .watch-card img {
-        width: 24vw;
-      }
-      #discover-section {
-        margin: 1rem 0.5rem;
-      }
-      .watch-card {
-        width: 24vw;
-      }
-      .widecard-image {
-        width: 40vw;
-      }
-      #header {
-        height: auto;
-        transition: top 0.25s;
-      }
-      #big-card,
-      .big-image {
-        width: 40vw !important;
-      }
-      #hero-title-image {
-        max-width: 90%;
-      }
-      #hero-desc {
-        width: 100%;
-        text-align: center;
-        font-size: 1rem;
-      }
-      #search-results {
-        gap: 2vw;
-      }
-      #hero-buttons {
-        justify-content: center;
-      }
-      #hero-bar {
-        justify-content: center;
-        margin-top: 10px;
-      }
-      #hero-content {
-        margin: 0 1rem;
-      }
-      #hero-card {
-        margin-bottom: 30vh;
-      }
-      #home {
-        top: -25vh;
-        margin-bottom: -25vh;
-      }
-      #hero-title {
-        display: flex;
-        justify-content: center;
-      }
-      #header-section {
-        margin: 1rem 2rem;
-      }
-      #suggested-container {
-        margin: 16px 1rem;
-        gap: 10px;
-      }
-      #header.show {
-        top: -74px;
-      }
-      #header.visible {
-        top: 0;
-      }
-      #discover-slider {
-        margin-right: 10px;
-        width: 26vw;
-      }
-      .card img {
-        width: 26vw;
-      }
-      #discover-card {
-        min-height: 40vw;
-      }
-      .card {
-        width: 26vw;
-      }
-    }
-    @media (max-width: 550px) {
-      #footer {
-        flex-direction: column;
-        gap: 10px;
-        padding: 1rem;
-      }
-      #watchlist-card {
-        gap: 2vw;
-      }
-      .watch-card img,
-      .watch-card {
-        width: 44vw;
-      }
-      .widecard-image {
-        width: 90vw;
-      }
-      #settings-main {
-        margin: 0 3vw;
-        padding: 0 2vw 2vw;
-      }
-      #settings-title {
-        font-size: 2.2rem;
-      }
-      #settings-button {
-        font-size: 4.5vw;
-        padding: 1.5vw;
-      }
-      #watchlist-clear {
-        width: auto;
-        height: auto;
-        font-size: 4.5vw;
-        padding: 1.5vw 4vw;
-      }
-      #footer-right {
-        justify-content: flex-start;
-        gap: 15px;
-        width: 100%;
-      }
-      #github {
-        font-size: 30px;
-      }
-      #search-section {
-        margin: 0;
-      }
-      #search-results {
-        gap: 3vw;
-      }
-      #search-title {
-        margin: 0 1rem;
-      }
-      #search-query {
-        margin: 0 1rem 1rem;
-      }
-      #big-card,
-      .big-image {
-        width: 45vw !important;
-      }
-      #hero-title-image {
-        max-width: 100%;
-      }
-      #hero-desc {
-        font-size: 0.875rem;
-      }
-      #header-section {
-        margin: 1rem;
-      }
-      #discover-section {
-        margin: 0;
-      }
-      #discover-title {
-        font-size: 1.5rem;
-      }
-      .card img {
-        width: 36vw;
-      }
-      #discover-card {
-        min-height: 55vw;
-      }
-      .card,
-      #discover-slider {
-        width: 36vw;
-      }
-      #suggested-container {
-        margin: 16px 1vw;
-        gap: 3vw;
-      }
-      #mcard,
-      .mimage {
-        width: 45vw !important;
-      }
-  
-      #check {
-        display: none;
-      }
-    }
-    @media (max-width: 500px) {
-      #header-section {
-        justify-content: center;
-      }
-      #header-logo {
-        content: url(/images/icon.svg);
-        height: 50px;
-        width: 50px;
-        margin-right: 0;
-      }
-      #header-tele {
-        content: url(/images/telegram.svg);
-        width: 33px;
-        height: auto;
-        margin-top: 5px;
-        margin-right: 0;
-        object-fit: contain;
-      }
-      #suggested-title {
-        font-size: 1.7rem;
-      }
-      #header-section {
-        margin: 0.1rem 1rem;
-      }
-      #header.show {
-        top: -71px;
-      }
-      #install-button,
-      #settings {
-        order: 1;
-      }
-    }
-    @media (max-width: 450px) {
-      #search-input {
-        width: 35vw;
-      }
-      #header-section {
-        margin: 0.5rem 0rem;
-      }
-      #header-right {
-        gap: 3vw;
-      }
-      #header-logo,
-      #header-tele {
-        margin-right: 2vw;
-      }
-    }
-      @media (max-height: 600px) {
-      #hero-title-image {
-        display: none !important;
-        max-width: 90%;
-      }
-      #hero-title-text {
-        display: flex;
-      }
-      #hero-desc {
-        width: 100% !important;
-        text-align: center;
-        font-size: 1rem;
-      }
-      #hero-buttons,
-      #hero-bar {
-        justify-content: center;
-      }
-      #hero-content {
-        margin: 0 1rem;
-      }
-      #hero-card {
-        margin-bottom: 15vh !important;
-      }
-      #home {
-        top: -10vh !important;
-        margin-bottom: -10vh !important;
-      }
-      #hero-title {
-        display: flex;
-        justify-content: center;
-      }
-      #header {
-        transition: top 0.25s;
-      }
-      #header.show {
-        top: -80px;
-      }
-      #header.visible {
-        top: 0;
-      }
-      #info-title {
-        display: none;
-      }
-      #info-title-text {
-        display: flex;
-      }
-      #discover-section {
-        margin: 0;
-      }
-  
-      #discover-slider {
-        margin-right: 10px;
-      }
-    }
-    @media (max-height: 450px) {
-      .card img,
-      #discover-slider {
-        width: 20vw;
-      }
-      #discover-card {
-        min-height: 31vw;
-        padding: 12px 1rem;
-      }
-      .card {
-        width: 20vw;
-      }
-      #discover-title {
-        font-size: 1.5rem;
-      }
-      #header-section {
-        margin: 0.8rem 1rem !important;
-      }
-      #info-top {
-        gap: 8px;
-        padding-top: 50px;
-      }
-      #info-description {
-        font-size: 0.875rem;
-      }
-    }
-    @media (max-width: 1400px) {
-  
-      .watch-card img,
-      .watch-card {
-        width: 15vw;
-      }
-      .widecard-image {
-        width: 20vw;
-      }
-  
-      .card img {
-        width: 16vw;
-      }
-      #discover-card {
-        min-height: 25vw;
-      }
-      .card,
-      #discover-slider {
-        width: 16vw;
-      }
-      #discover-section {
-        margin: 1rem 1.5rem;
-      }
-    }
-    @media (max-width: 1100px) {
-      #service {
-        display: none;
-      }
-      #discover-section {
-        margin: 1rem;
-      }
-      #watchlist-button {
-        opacity: 1;
-      }
-      .watch-card img,
-      .watch-card {
-        width: 18vw;
-      }
-      #settings-main {
-        margin: 0 2.5rem;
-      }
-      .widecard-image {
-        width: 28vw;
-      }
-      #hero-desc {
-        width: 60vw;
-      }
-      #info-poster {
-        display: none;
-      }
-      #suggested-container {
-        margin: 16px 50px;
-      }
-  
-      .card-content {
-        opacity: 1;
-      }
-      .card-content {
-        background: linear-gradient(to top, #000, #0000 70%);
-      }
-      .swiper-button-next,
-      .swiper-button-prev {
-        display: none !important;
-      }
-      .card img {
-        width: 20vw;
-      }
-      #discover-card {
-        min-height: 31vw;
-        padding: 12px 1rem;
-      }
-      .card,
-      #discover-slider {
-        width: 20vw;
-      }
-    }
-    @media (max-width: 800px) {
-      #search-section {
-        margin: 0 2rem;
-      }
-      .watch-card img {
-        width: 24vw;
-      }
-      #discover-section {
-        margin: 1rem 0.5rem;
-      }
-      .watch-card {
-        width: 24vw;
-      }
-      .widecard-image {
-        width: 40vw;
-      }
-      #header {
-        height: auto;
-        transition: top 0.25s;
-      }
-      #big-card,
-      .big-image {
-        width: 40vw !important;
-      }
-      #hero-title-image {
-        max-width: 90%;
-      }
-      #hero-desc {
-        width: 100%;
-        text-align: center;
-        font-size: 1rem;
-      }
-      #search-results {
-        gap: 2vw;
-      }
-      #hero-buttons {
-        justify-content: center;
-      }
-      #hero-bar {
-        justify-content: center;
-        margin-top: 10px;
-      }
-      #hero-content {
-        margin: 0 1rem;
-      }
-      #hero-card {
-        margin-bottom: 30vh;
-      }
-      #home {
-        top: -25vh;
-        margin-bottom: -25vh;
-      }
-      #hero-title {
-        display: flex;
-        justify-content: center;
-      }
-      #header-section {
-        margin: 1rem 2rem;
-      }
-      #suggested-container {
-        margin: 16px 1rem;
-        gap: 10px;
-      }
-      #header.show {
-        top: -74px;
-      }
-      #header.visible {
-        top: 0;
-      }
-      #discover-slider {
-        margin-right: 10px;
-        width: 26vw;
-      }
-      .card img {
-        width: 26vw;
-      }
-      #discover-card {
-        min-height: 40vw;
-      }
-      .card {
-        width: 26vw;
-      }
-    }
-    @media (max-width: 550px) {
-      #footer {
-        flex-direction: column;
-        gap: 10px;
-        padding: 1rem;
-      }
-      #watchlist-card {
-        gap: 2vw;
-      }
-      .watch-card img,
-      .watch-card {
-        width: 44vw;
-      }
-      .widecard-image {
-        width: 90vw;
-      }
-      #settings-main {
-        margin: 0 3vw;
-        padding: 0 2vw 2vw;
-      }
-      #settings-title {
-        font-size: 2.2rem;
-      }
-      #settings-button {
-        font-size: 4.5vw;
-        padding: 1.5vw;
-      }
-      #watchlist-clear {
-        width: auto;
-        height: auto;
-        font-size: 4.5vw;
-        padding: 1.5vw 4vw;
-      }
-      #footer-right {
-        justify-content: flex-start;
-        gap: 15px;
-        width: 100%;
-      }
-      #github {
-        font-size: 30px;
-      }
-      #search-section {
-        margin: 0;
-      }
-      #search-results {
-        gap: 3vw;
-      }
-      #search-title {
-        margin: 0 1rem;
-      }
-      #search-query {
-        margin: 0 1rem 1rem;
-      }
-      #big-card,
-      .big-image {
-        width: 45vw !important;
-      }
-      #hero-title-image {
-        max-width: 100%;
-      }
-      #hero-desc {
-        font-size: 0.875rem;
-      }
-      #header-section {
-        margin: 1rem;
-      }
-      #discover-section {
-        margin: 0;
-      }
-      #discover-title {
-        font-size: 1.5rem;
-      }
-      .card img {
-        width: 36vw;
-      }
-      #discover-card {
-        min-height: 55vw;
-      }
-      .card,
-      #discover-slider {
-        width: 36vw;
-      }
-      #suggested-container {
-        margin: 16px 1vw;
-        gap: 3vw;
-      }
-      #mcard,
-      .mimage {
-        width: 45vw !important;
-      }
-  
-      #check {
-        display: none;
-      }
-    }
-    @media (max-width: 500px) {
-      #header-section {
-        justify-content: center;
-      }
-      #header-logo {
-        content: url(/images/icon.svg);
-        height: 50px;
-        width: 50px;
-        margin-right: 0;
-      }
-      #header-tele {
-        content: url(/images/telegram.svg);
-        width: 33px;
-        height: auto;
-        margin-top: 5px;
-        margin-right: 0;
-        object-fit: contain;
-      }
-      #suggested-title {
-        font-size: 1.7rem;
-      }
-      #header-section {
-        margin: 0.1rem 1rem;
-      }
-      #header.show {
-        top: -71px;
-      }
-      #install-button,
-      #settings {
-        order: 1;
-      }
-    }
-    @media (max-width: 450px) {
-      #search-input {
-        width: 35vw;
-      }
-      #header-section {
-        margin: 0.5rem 0rem;
-      }
-      #header-right {
-        gap: 3vw;
-      }
-      #header-logo,
-      #header-tele {
-        margin-right: 2vw;
-      }
-    }  
-  </style>
   <script>
     const apiKey = '8fe098fd26a1b240d687bf47d8ac5c5e';
 
@@ -1037,7 +36,7 @@ body::-webkit-scrollbar-track {
         document.getElementById('info-rating').textContent = `${media.vote_average.toFixed(1)}/10`;
         document.getElementById('info-content-rating').textContent = media.adult ? 'R' : 'PG';
         document.getElementById('info-description').textContent = media.overview;
-        document.title = `${media.name} - TV Show Details`;
+        document.title = `${media.name} - NOVA`;
 
         fetchTVShowLogos(mediaId);
         fetchSeasons(mediaId);
@@ -1073,29 +72,38 @@ body::-webkit-scrollbar-track {
     }
 
     async function fetchSeasons(mediaId) {
-      try {
-        const seasonResponse = await fetch(`https://api.themoviedb.org/3/tv/${mediaId}?api_key=${apiKey}&language=en-US`);
-        const seasonData = await seasonResponse.json();
+  try {
+    const seasonResponse = await fetch(`https://api.themoviedb.org/3/tv/${mediaId}?api_key=${apiKey}&language=en-US`);
+    const seasonData = await seasonResponse.json();
 
-        const seasonSelector = document.getElementById('season-selector');
-        seasonSelector.innerHTML = '';
+    const seasonSelector = document.getElementById('season-selector');
+    seasonSelector.innerHTML = '';
+    let firstValidSeason = null;
 
-        seasonData.seasons.forEach((season, index) => {
-          if (season.air_date && new Date(season.air_date) <= new Date()) {
-            const option = document.createElement('option');
-            option.value = season.season_number;
-            option.textContent = `Season ${season.season_number}`;
-            seasonSelector.appendChild(option);
-          }
-        });
+    seasonData.seasons.forEach((season) => {
+      // Exclude the "Specials" season (season 0)
+      if (season.season_number > 0 && season.air_date && new Date(season.air_date) <= new Date()) {
+        const option = document.createElement('option');
+        option.value = season.season_number;
+        option.textContent = `Season ${season.season_number}`;
+        seasonSelector.appendChild(option);
 
-        if (seasonData.seasons.length > 0) {
-          fetchEpisodes(mediaId, seasonData.seasons[0].season_number);
+        // Set the first valid season
+        if (!firstValidSeason) {
+          firstValidSeason = season.season_number;
         }
-      } catch (error) {
-        console.error('Error fetching seasons:', error);
       }
+    });
+
+    if (firstValidSeason) {
+      seasonSelector.value = firstValidSeason; // Select the first valid season
+      fetchEpisodes(mediaId, firstValidSeason); // Fetch episodes for the first valid season
     }
+  } catch (error) {
+    console.error('Error fetching seasons:', error);
+  }
+}
+
 
     async function fetchEpisodes(mediaId, seasonNumber) {
   try {
@@ -1193,3 +201,1008 @@ body::-webkit-scrollbar-track {
   </div>
 </body>
 </html>
+
+
+
+<style>
+  .container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 10px;
+}
+@media screen and (max-width: 600px) {
+.container::-webkit-scrollbar {
+  height: 0px;
+}
+.container::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 10px;
+}
+}
+body::-webkit-scrollbar {
+width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+background-color: rgb(60, 67, 69);
+border-radius: 10px;
+border: 2px solid rgb(60, 67, 69);
+}
+
+body::-webkit-scrollbar-track {
+background-color: transparent;
+}
+.episode-content p {
+margin: 5px 0;
+}
+.title-duration-wrapper {
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 100%;
+}
+.episode-title {
+font-size: 1.0rem;
+font-weight: bold;
+flex: 1;
+margin-right: 10px;
+}
+
+.episode-description {
+font-size: 13px;
+color: #aaa;
+font-weight: 400;
+
+}
+
+
+* {
+font-family: Manrope, sans-serif;
+color: #fff;
+}
+body {
+margin: 0;
+background-color: #181a20;
+overflow-x: hidden;
+
+}
+p {
+margin: 0;
+padding: 0;
+}
+.hidden {
+display: none !important;
+}
+a {
+text-decoration: none;
+}
+#info-container {
+max-width: 1200px;
+margin: auto;
+padding: 20px;
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: row;
+width: 100vw;
+height: 100vh;
+gap: 50px;
+text-align: center;
+}
+#info-backdrop {
+width: 100%;
+height: 500px;
+object-fit: cover;
+filter: blur(10px);
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+opacity: 0.3;
+}
+#info-poster {
+width: 300px;
+border-radius: 12px;
+z-index: 12;
+box-shadow: 5px 5px 20px #181a20;
+}
+#info-top {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 10px;
+width: 600px;
+gap: 15px;
+z-index: 11;
+}
+#info-title {
+max-width: 45vw;
+max-height: 35vh;
+font-size: 2.5rem;
+font-weight: 600;
+}
+#info-title-text {
+display: none;
+font-size: 2.5rem;
+font-weight: 600;
+}
+#info-bar {
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 12px;
+font-weight: 600;
+}
+#info-rating-bar {
+display: flex;
+align-items: center;
+gap: 2px;
+}
+#info-genres {
+font: bold;
+display: flex;
+justify-content: center;
+flex-direction: row;
+flex-wrap: wrap;
+gap: 10px;
+}
+.genre-box {
+padding: 5px 8px;
+border-radius: 5px;
+background-color: #1f669c;
+color: #ffffff;
+box-shadow: 1px 2px 20px #181a20;
+}
+#info-description {
+color: #ffffffd9;
+font-size: 1.1rem;
+}
+#season-selector {
+background-color: #00ccff;
+color: black;
+border: none;
+padding: 10px;
+border-radius: 5px;
+font-size: 1rem;
+cursor: pointer;
+}
+#episodes-container {
+margin-top: 40px;
+
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 20px;
+border-radius: 8px;
+justify-content: center;
+
+
+}
+@media (max-width: 600px) { 
+#episodes-container {
+padding: 0 20px;
+position: absolute;
+right: 40px;
+}
+}
+@media (max-width: 600px) { 
+#episodes-container {
+padding: 0 20px;
+position: absolute;
+left: 40px;
+width: 400px;
+}
+}
+.episode-box {
+text-decoration: none;
+color: white;
+display: flex;
+flex-direction: column;
+background: #1c1c1c00;
+border-radius: 10px;
+overflow: hidden;
+
+}
+.episode img {
+width: 100%;
+border-radius: 8px;
+}
+.episode-content {
+
+margin: 5px 0;
+}
+
+.episode-duration {
+font-size: 0.9rem;
+color: #aaa;
+white-space: nowrap;
+}
+}
+#footer {
+background-color: #101010;
+padding: 20px;
+text-align: center;
+color: white;
+position: fixed;
+bottom: 0;
+width: 100%;
+}
+#footer-right {
+float: right;
+}
+#dmca {
+color: #00ccff;
+text-decoration: none;
+}
+#dmca:hover {
+text-decoration: underline;
+}
+@media (max-height: 600px) {
+
+  
+#hero-title-image {
+  display: none !important;
+  max-width: 90%;
+}
+#hero-title-text {
+  display: flex;
+}
+#hero-desc {
+  width: 100% !important;
+  text-align: center;
+  font-size: 1rem;
+}
+#hero-buttons,
+#hero-bar {
+  justify-content: center;
+}
+#hero-content {
+  margin: 0 1rem;
+}
+#hero-card {
+  margin-bottom: 15vh !important;
+}
+#home {
+  top: -10vh !important;
+  margin-bottom: -10vh !important;
+}
+#hero-title {
+  display: flex;
+  justify-content: center;
+}
+#header {
+  transition: top 0.25s;
+}
+#header.show {
+  top: -80px;
+}
+#header.visible {
+  top: 0;
+}
+#info-title {
+  display: none;
+}
+#info-title-text {
+  display: flex;
+}
+#discover-section {
+  margin: 0;
+}
+
+#discover-slider {
+  margin-right: 10px;
+}
+}
+@media (max-height: 450px) {
+.card img,
+#discover-slider {
+  width: 20vw;
+}
+#discover-card {
+  min-height: 31vw;
+  padding: 12px 1rem;
+}
+.card {
+  width: 20vw;
+}
+#discover-title {
+  font-size: 1.5rem;
+}
+#header-section {
+  margin: 0.8rem 1rem !important;
+}
+#info-top {
+  gap: 8px;
+  padding-top: 50px;
+}
+#info-description {
+  font-size: 0.875rem;
+}
+}
+@media (max-width: 1400px) {
+
+.watch-card img,
+.watch-card {
+  width: 15vw;
+}
+.widecard-image {
+  width: 20vw;
+}
+
+.card img {
+  width: 16vw;
+}
+#discover-card {
+  min-height: 25vw;
+}
+.card,
+#discover-slider {
+  width: 16vw;
+}
+#discover-section {
+  margin: 1rem 1.5rem;
+}
+}
+@media (max-width: 1100px) {
+#service {
+  display: none;
+}
+#discover-section {
+  margin: 1rem;
+}
+#watchlist-button {
+  opacity: 1;
+}
+.watch-card img,
+.watch-card {
+  width: 18vw;
+}
+#settings-main {
+  margin: 0 2.5rem;
+}
+.widecard-image {
+  width: 28vw;
+}
+#hero-desc {
+  width: 60vw;
+}
+#info-poster {
+  display: none;
+}
+#suggested-container {
+  margin: 16px 50px;
+}
+
+.card-content {
+  opacity: 1;
+}
+.card-content {
+  background: linear-gradient(to top, #000, #0000 70%);
+}
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+.card img {
+  width: 20vw;
+}
+#discover-card {
+  min-height: 31vw;
+  padding: 12px 1rem;
+}
+.card,
+#discover-slider {
+  width: 20vw;
+}
+}
+@media (max-width: 800px) {
+#search-section {
+  margin: 0 2rem;
+}
+.watch-card img {
+  width: 24vw;
+}
+#discover-section {
+  margin: 1rem 0.5rem;
+}
+.watch-card {
+  width: 24vw;
+}
+.widecard-image {
+  width: 40vw;
+}
+#header {
+  height: auto;
+  transition: top 0.25s;
+}
+#big-card,
+.big-image {
+  width: 40vw !important;
+}
+#hero-title-image {
+  max-width: 90%;
+}
+#hero-desc {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+}
+#search-results {
+  gap: 2vw;
+}
+#hero-buttons {
+  justify-content: center;
+}
+#hero-bar {
+  justify-content: center;
+  margin-top: 10px;
+}
+#hero-content {
+  margin: 0 1rem;
+}
+#hero-card {
+  margin-bottom: 30vh;
+}
+#home {
+  top: -25vh;
+  margin-bottom: -25vh;
+}
+#hero-title {
+  display: flex;
+  justify-content: center;
+}
+#header-section {
+  margin: 1rem 2rem;
+}
+#suggested-container {
+  margin: 16px 1rem;
+  gap: 10px;
+}
+#header.show {
+  top: -74px;
+}
+#header.visible {
+  top: 0;
+}
+#discover-slider {
+  margin-right: 10px;
+  width: 26vw;
+}
+.card img {
+  width: 26vw;
+}
+#discover-card {
+  min-height: 40vw;
+}
+.card {
+  width: 26vw;
+}
+}
+@media (max-width: 550px) {
+#footer {
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+}
+#watchlist-card {
+  gap: 2vw;
+}
+.watch-card img,
+.watch-card {
+  width: 44vw;
+}
+.widecard-image {
+  width: 90vw;
+}
+#settings-main {
+  margin: 0 3vw;
+  padding: 0 2vw 2vw;
+}
+#settings-title {
+  font-size: 2.2rem;
+}
+#settings-button {
+  font-size: 4.5vw;
+  padding: 1.5vw;
+}
+#watchlist-clear {
+  width: auto;
+  height: auto;
+  font-size: 4.5vw;
+  padding: 1.5vw 4vw;
+}
+#footer-right {
+  justify-content: flex-start;
+  gap: 15px;
+  width: 100%;
+}
+#github {
+  font-size: 30px;
+}
+#search-section {
+  margin: 0;
+}
+#search-results {
+  gap: 3vw;
+}
+#search-title {
+  margin: 0 1rem;
+}
+#search-query {
+  margin: 0 1rem 1rem;
+}
+#big-card,
+.big-image {
+  width: 45vw !important;
+}
+#hero-title-image {
+  max-width: 100%;
+}
+#hero-desc {
+  font-size: 0.875rem;
+}
+#header-section {
+  margin: 1rem;
+}
+#discover-section {
+  margin: 0;
+}
+#discover-title {
+  font-size: 1.5rem;
+}
+.card img {
+  width: 36vw;
+}
+#discover-card {
+  min-height: 55vw;
+}
+.card,
+#discover-slider {
+  width: 36vw;
+}
+#suggested-container {
+  margin: 16px 1vw;
+  gap: 3vw;
+}
+#mcard,
+.mimage {
+  width: 45vw !important;
+}
+
+#check {
+  display: none;
+}
+}
+@media (max-width: 500px) {
+#header-section {
+  justify-content: center;
+}
+#header-logo {
+  content: url(/images/icon.svg);
+  height: 50px;
+  width: 50px;
+  margin-right: 0;
+}
+#header-tele {
+  content: url(/images/telegram.svg);
+  width: 33px;
+  height: auto;
+  margin-top: 5px;
+  margin-right: 0;
+  object-fit: contain;
+}
+#suggested-title {
+  font-size: 1.7rem;
+}
+#header-section {
+  margin: 0.1rem 1rem;
+}
+#header.show {
+  top: -71px;
+}
+#install-button,
+#settings {
+  order: 1;
+}
+}
+@media (max-width: 450px) {
+#search-input {
+  width: 35vw;
+}
+#header-section {
+  margin: 0.5rem 0rem;
+}
+#header-right {
+  gap: 3vw;
+}
+#header-logo,
+#header-tele {
+  margin-right: 2vw;
+}
+}
+@media (max-height: 600px) {
+#hero-title-image {
+  display: none !important;
+  max-width: 90%;
+}
+#hero-title-text {
+  display: flex;
+}
+#hero-desc {
+  width: 100% !important;
+  text-align: center;
+  font-size: 1rem;
+}
+#hero-buttons,
+#hero-bar {
+  justify-content: center;
+}
+#hero-content {
+  margin: 0 1rem;
+}
+#hero-card {
+  margin-bottom: 15vh !important;
+}
+#home {
+  top: -10vh !important;
+  margin-bottom: -10vh !important;
+}
+#hero-title {
+  display: flex;
+  justify-content: center;
+}
+#header {
+  transition: top 0.25s;
+}
+#header.show {
+  top: -80px;
+}
+#header.visible {
+  top: 0;
+}
+#info-title {
+  display: none;
+}
+#info-title-text {
+  display: flex;
+}
+#discover-section {
+  margin: 0;
+}
+
+#discover-slider {
+  margin-right: 10px;
+}
+}
+@media (max-height: 450px) {
+.card img,
+#discover-slider {
+  width: 20vw;
+}
+#discover-card {
+  min-height: 31vw;
+  padding: 12px 1rem;
+}
+.card {
+  width: 20vw;
+}
+#discover-title {
+  font-size: 1.5rem;
+}
+#header-section {
+  margin: 0.8rem 1rem !important;
+}
+#info-top {
+  gap: 8px;
+  padding-top: 50px;
+}
+#info-description {
+  font-size: 0.875rem;
+}
+}
+@media (max-width: 1400px) {
+
+.watch-card img,
+.watch-card {
+  width: 15vw;
+}
+.widecard-image {
+  width: 20vw;
+}
+
+.card img {
+  width: 16vw;
+}
+#discover-card {
+  min-height: 25vw;
+}
+.card,
+#discover-slider {
+  width: 16vw;
+}
+#discover-section {
+  margin: 1rem 1.5rem;
+}
+}
+@media (max-width: 1100px) {
+#service {
+  display: none;
+}
+#discover-section {
+  margin: 1rem;
+}
+#watchlist-button {
+  opacity: 1;
+}
+.watch-card img,
+.watch-card {
+  width: 18vw;
+}
+#settings-main {
+  margin: 0 2.5rem;
+}
+.widecard-image {
+  width: 28vw;
+}
+#hero-desc {
+  width: 60vw;
+}
+#info-poster {
+  display: none;
+}
+#suggested-container {
+  margin: 16px 50px;
+}
+
+.card-content {
+  opacity: 1;
+}
+.card-content {
+  background: linear-gradient(to top, #000, #0000 70%);
+}
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+.card img {
+  width: 20vw;
+}
+#discover-card {
+  min-height: 31vw;
+  padding: 12px 1rem;
+}
+.card,
+#discover-slider {
+  width: 20vw;
+}
+}
+@media (max-width: 800px) {
+#search-section {
+  margin: 0 2rem;
+}
+.watch-card img {
+  width: 24vw;
+}
+#discover-section {
+  margin: 1rem 0.5rem;
+}
+.watch-card {
+  width: 24vw;
+}
+.widecard-image {
+  width: 40vw;
+}
+#header {
+  height: auto;
+  transition: top 0.25s;
+}
+#big-card,
+.big-image {
+  width: 40vw !important;
+}
+#hero-title-image {
+  max-width: 90%;
+}
+#hero-desc {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+}
+#search-results {
+  gap: 2vw;
+}
+#hero-buttons {
+  justify-content: center;
+}
+#hero-bar {
+  justify-content: center;
+  margin-top: 10px;
+}
+#hero-content {
+  margin: 0 1rem;
+}
+#hero-card {
+  margin-bottom: 30vh;
+}
+#home {
+  top: -25vh;
+  margin-bottom: -25vh;
+}
+#hero-title {
+  display: flex;
+  justify-content: center;
+}
+#header-section {
+  margin: 1rem 2rem;
+}
+#suggested-container {
+  margin: 16px 1rem;
+  gap: 10px;
+}
+#header.show {
+  top: -74px;
+}
+#header.visible {
+  top: 0;
+}
+#discover-slider {
+  margin-right: 10px;
+  width: 26vw;
+}
+.card img {
+  width: 26vw;
+}
+#discover-card {
+  min-height: 40vw;
+}
+.card {
+  width: 26vw;
+}
+}
+@media (max-width: 550px) {
+#footer {
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+}
+#watchlist-card {
+  gap: 2vw;
+}
+.watch-card img,
+.watch-card {
+  width: 44vw;
+}
+.widecard-image {
+  width: 90vw;
+}
+#settings-main {
+  margin: 0 3vw;
+  padding: 0 2vw 2vw;
+}
+#settings-title {
+  font-size: 2.2rem;
+}
+#settings-button {
+  font-size: 4.5vw;
+  padding: 1.5vw;
+}
+#watchlist-clear {
+  width: auto;
+  height: auto;
+  font-size: 4.5vw;
+  padding: 1.5vw 4vw;
+}
+#footer-right {
+  justify-content: flex-start;
+  gap: 15px;
+  width: 100%;
+}
+#github {
+  font-size: 30px;
+}
+#search-section {
+  margin: 0;
+}
+#search-results {
+  gap: 3vw;
+}
+#search-title {
+  margin: 0 1rem;
+}
+#search-query {
+  margin: 0 1rem 1rem;
+}
+#big-card,
+.big-image {
+  width: 45vw !important;
+}
+#hero-title-image {
+  max-width: 100%;
+}
+#hero-desc {
+  font-size: 0.875rem;
+}
+#header-section {
+  margin: 1rem;
+}
+#discover-section {
+  margin: 0;
+}
+#discover-title {
+  font-size: 1.5rem;
+}
+.card img {
+  width: 36vw;
+}
+#discover-card {
+  min-height: 55vw;
+}
+.card,
+#discover-slider {
+  width: 36vw;
+}
+#suggested-container {
+  margin: 16px 1vw;
+  gap: 3vw;
+}
+#mcard,
+.mimage {
+  width: 45vw !important;
+}
+
+#check {
+  display: none;
+}
+}
+@media (max-width: 500px) {
+#header-section {
+  justify-content: center;
+}
+#header-logo {
+  content: url(/images/icon.svg);
+  height: 50px;
+  width: 50px;
+  margin-right: 0;
+}
+#header-tele {
+  content: url(/images/telegram.svg);
+  width: 33px;
+  height: auto;
+  margin-top: 5px;
+  margin-right: 0;
+  object-fit: contain;
+}
+#suggested-title {
+  font-size: 1.7rem;
+}
+#header-section {
+  margin: 0.1rem 1rem;
+}
+#header.show {
+  top: -71px;
+}
+#install-button,
+#settings {
+  order: 1;
+}
+}
+@media (max-width: 450px) {
+#search-input {
+  width: 35vw;
+}
+#header-section {
+  margin: 0.5rem 0rem;
+}
+#header-right {
+  gap: 3vw;
+}
+#header-logo,
+#header-tele {
+  margin-right: 2vw;
+}
+}  
+</style>
