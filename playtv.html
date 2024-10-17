@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Player</title>
+  <link rel="icon" href="https://github.com/PrivateKY/MYDATABASE/raw/refs/heads/main/icon" type="image/x-icon">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #000;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+  <script>
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const mediaId = getQueryParam('id');
+      if (mediaId) {
+        const iframe = document.getElementById('movie-iframe');
+        iframe.src = `https://vidlink.pro/tv/${mediaId}`;
+      } else {
+        console.error('Movie ID not found.');
+      }
+    });
+  </script>
+</head>
+<body>
+  <iframe id="movie-iframe" src="" allowfullscreen></iframe>
+</body>
+</html>
+<script>
+  (function() {
+      const devtools = { open: false };
+      const threshold = 100;
+
+      const checkDevTools = setInterval(() => {
+          if (window.outerWidth - window.innerWidth > 150) {
+              devtools.open = true;
+              clearInterval(checkDevTools);
+              window.location.href = "block.html";
+          }
+      }, threshold);
+  })();
+</script>

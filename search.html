@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVA</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://github.com/PrivateKY/MYDATABASE/raw/refs/heads/main/icon" type="image/x-icon">
+</head>
+<body>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="search..." oninput="searchMedia()">
+  </div>
+  <div class="media-container">
+    <h2>What's Popular</h2>
+    <div id="mediaList" class="media-list"></div>
+  </div>
+  <script>
+    const API_KEY = '8fe098fd26a1b240d687bf47d8ac5c5e';
+    const BASE_URL = 'https://api.themoviedb.org/3';
+    const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+
+    document.addEventListener('DOMContentLoaded', fetchTrendingMedia);
+
+    async function fetchTrendingMedia() {
+      try {
+        const response = await fetch(`${BASE_URL}/trending/all/week?api_key=${API_KEY}`);
+        const data = await response.json();
+        displayMedia(data.results);
+      } catch (error) {
+        console.error('Error fetching trending media:', error);
+      }
+    }
+
+    async function searchMedia() {
+      const query = document.getElementById('searchInput').value.trim();
+      if (query.length > 0) {
+        try {
+          const response = await fetch(`${BASE_URL}/search/multi?api_key=${API_KEY}&query=${query}`);
+          const data = await response.json();
+          displayMedia(data.results);
+        } catch (error) {
+          console.error('Error searching media:', error);
+        }
+      } else {
+        fetchTrendingMedia();
+      }
+    }
+
+    function displayMedia(media) {
+      const mediaList = document.getElementById('mediaList');
+      mediaList.innerHTML = '';
+      media.forEach(item => {
+        const mediaType = item.media_type === 'movie' ? 'movie' : 'tv';
+        const backdropImage = item.backdrop_path ? IMG_URL + item.backdrop_path : 'https://github.com/PrivateKY/MYDATABASE/blob/main/no_image.png?raw=true';
+        
+        const mediaItem = document.createElement('div');
+        mediaItem.classList.add('media-item');
+        mediaItem.innerHTML = `
+          <img src="${backdropImage}" alt="${item.title || item.name}">
+          <h3>${item.title || item.name}</h3>
+        `;
+        
+        mediaItem.onclick = () => {
+          const releaseDate = new Date(item.release_date || item.first_air_date);
+          const currentDate = new Date();
+          if (mediaType === 'movie') {
+            if (releaseDate > currentDate) {
+              window.location.href = `unreleased.html?id=${item.id}`;
+            } else {
+              window.location.href = `movie.html?id=${item.id}`;
+            }
+          } else if (mediaType === 'tv') {
+            window.location.href = `tv.html?id=${item.id}`;
+          }
+        };
+        
+        mediaList.appendChild(mediaItem);
+      });
+    }
+  </script>
+</body>
+</html>
+
+<style>
+  body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .search-container {
+    background-color: #0f0f0f;
+    text-align: center;
+  }
+
+  #searchInput {
+    width: 90%;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: #171616;
+    color: #fff;
+  }
+
+  .media-container {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  .media-list {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .media-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+  }
+
+  .media-item img {
+    width: 100%;
+    max-width: 180px;
+    border-radius: 9px;
+  }
+
+  .media-item h3 {
+    font-size: 18px;
+    margin: 0;
+    flex: 1;
+  }
+
+  .media-item h3 {
+    font-size: 14px;
+    margin: 0;
+    flex: 1;
+    padding-right: 90px;
+  }
+</style>
+
+<script>
+  (function() {
+      const devtools = { open: false };
+      const threshold = 100;
+
+      const checkDevTools = setInterval(() => {
+          if (window.outerWidth - window.innerWidth > 150) {
+              devtools.open = true;
+              clearInterval(checkDevTools);
+              window.location.href = "block.html";
+          }
+      }, threshold);
+  })();
+</script>
